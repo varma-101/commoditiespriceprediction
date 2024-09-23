@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Commodity Price Prediction</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            padding-left:150px;
+            padding-right: 150px;
+        }
+
+        .navbar {
+            background-color: orange;
+            overflow: hidden;
+            text-align: center;
+            display: flex;
+            justify-content: space-between;
+            padding: 10px;
+ 
+        }
+
+        .navbar a {
+            float: left;
+            display: block;
+            color:black;
+            text-align: center;
+            padding: 14px 20px;
+            text-decoration: none;
+        }
+
+        .navbar a:hover {
+            background-color: #ddd;
+            color: black;
+        }
+
+        .navbar .title {
+            font-size: 30px;
+            font-weight: bold;
+            margin-left: 20px;
+        }
+
+        .navbar .nav-right {
+            margin-right: 20px;
+        }
+
+        .nav-right a {
+            float: none;
+            display: inline-block;
+        }
+
+        h2 {
+            margin-top: 20px;
+        }
+
+        .center-table {
+            display: flex;
+            justify-content: center;
+            margin-top: 20px;
+        }
+
+        table {
+            width: 80%;
+            border-collapse: collapse;
+        }
+
+        th, td {
+            border: 1px solid #ddd;
+            padding: 12px;
+            text-align: center;
+        }
+
+        th {
+            background-color: #f2f2f2;
+        }
+
+        button {
+            padding: 8px 12px;
+            background-color: orange;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #45a049;
+        }
+        .container {
+            padding-left: 120px;
+            padding-right: 120px;
+        }
+
+    </style>
+</head>
+<body>
+    <div class="container">
+   <div class="navbar">
+        <a href="#" class="title">Price Prediction</a>
+        <div class="nav-right">
+            <a href="#">Home</a>
+            <a href="#">About Us</a>
+            <a href="#">Profile</a>
+        </div>
+    </div>
+</div>
+
+    <h2>Commodity Price Prediction Table</h2>
+
+    <div class="center-table">
+        <table>
+            <thead>
+                <tr>
+                    <th>Commodities</th>
+                    <th>Historical Price (₹)</th>
+                    <th>Predicted Price (₹)</th>
+                    <th>Price Difference (₹)</th>
+                    <th>Volatility (%)</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Gram</td>
+                    <td>₹85.6</td>
+                    <td>₹87.1</td>
+                    <td>₹1.5</td>
+                    <td>0.75%</td>
+                    <td><button onclick="predict('Gram')">Predict</button></td>
+                </tr>
+                <tr>
+                    <td>Tur</td>
+                    <td>₹167.0</td>
+                    <td>₹164.2</td>
+                    <td>₹-2.8</td>
+                    <td>-2%</td>
+                    <td><button onclick="predict('Tur')">Predict</button></td>
+                </tr>
+                <tr>
+                    <td>Urad</td>
+                    <td>₹126.4</td>
+                    <td>₹124.4</td>
+                    <td>-₹2</td>
+                    <td>-2%</td>
+                    <td><button onclick="predict('Urad')">Predict</button></td>
+                </tr>
+                <tr>
+                    <td>Moong</td>
+                    <td>₹113.25</td>
+                    <td>₹115.65</td>
+                    <td>₹2.4</td>
+                    <td>1.5%</td>
+                    <td><button onclick="predict('Moong')">Predict</button></td>
+                </tr>
+                <tr>
+                    <td>Masur</td>
+                    <td>₹91.6</td>
+                    <td>₹89.4</td>
+                    <td>-₹2.2</td>
+                    <td>-2%</td>
+                    <td><button onclick="predict('Masur')">Predict</button></td>
+                </tr>
+                <tr>
+                    <td>Rice</td>
+                    <td>₹45.5</td>
+                    <td>₹43.5</td>
+                    <td>₹2</td>
+                    <td>2%</td>
+                    <td><button onclick="predict('Rice')">Predict</button></td>
+                </tr>
+                <tr>
+                    <td>Wheat</td>
+                    <td>₹28.8</td>
+                    <td>₹30.8</td>
+                    <td>₹2</td>
+                    <td>3%</td>
+                    <td><button onclick="predict('Wheat')">Predict</button></td>
+                </tr>
+                <tr>
+                    <td>Sugar</td>
+                    <td>₹43.5</td>
+                    <td>₹44.7</td>
+                    <td>₹1.2</td>
+                    <td>1%</td>
+                    <td><button onclick="predict('Sugar')">Predict</button></td>
+                </tr>
+                <tr>
+                    <td>Onion</td>
+                    <td>₹49.3</td>
+                    <td>₹47.3</td>
+                    <td>-₹2</td>
+                    <td>-2%</td>
+                    <td><button onclick="predict('Onion')">Predict</button></td>
+                </tr>
+                <tr>
+                    <td>Potato</td>
+                    <td>₹35.6</td>
+                    <td>₹36.64</td>
+                    <td>₹1</td>
+                    <td>1.5%</td>
+                    <td><button onclick="predict('Potato')">Predict</button></td>
+                </tr>
+                <tr>
+                    <td>Tomato</td>
+                    <td>₹43.5</td>
+                    <td>₹44.3</td>
+                    <td>₹0.8</td>
+                    <td>1%</td>
+                    <td><button onclick="predict('Tomato')">Predict</button></td>
+                </tr>
+                <tr>
+                    <td>Milk</td>
+                    <td>₹56.7</td>
+                    <td>₹58.72</td>
+                    <td>₹2</td>
+                    <td>1.5%</td>
+                    <td><button onclick="predict('Milk')">Predict</button></td>
+                </tr>
+                <tr>
+                    <td>Eggs</td>
+                    <td>₹135.78</td>
+                    <td>₹137.7</td>
+                    <td>₹2</td>
+                    <td>1.6%</td>
+                    <td><button onclick="predict('Eggs')">Predict</button></td>
+                </tr>
+                <tr>
+                    <td>Chicken</td>
+                    <td>₹136.75</td>
+                    <td>₹134.75</td>
+                    <td>₹-2</td>
+                    <td>1%</td>
+                    <td><button onclick="predict('Chicken')">Predict</button></td>
+                </tr>
+                <tr>
+                    <td>Banana</td>
+                    <td>₹47.9</td>
+                    <td>₹49.3</td>
+                    <td>₹1.4</td>
+                    <td>1.2%</td>
+                    <td><button onclick="predict('Banana')">Predict</button></td>
+                </tr>
+                <tr>
+                    <td>Tea</td>
+                    <td>₹265.9</td>
+                    <td>₹267.3</td>
+                    <td>₹2.4</td>
+                    <td>0.4%</td>
+                    <td><button onclick="predict('Tea')">Predict</button></td>
+                </tr>
+                <tr>
+                    <td>Coffee</td>
+                    <td>₹852.52</td>
+                    <td>₹847.98</td>
+                    <td>₹2.46</td>
+                    <td>0.7%</td>
+                    <td><button onclick="predict('Coffee')">Predict</button></td>
+                </tr>
+                <tr>
+                    <td>Oil</td>
+                    <td>₹118.5</td>
+                    <td>₹120.0</td>
+                    <td>₹-1.5</td>
+                    <td>-0.8%</td>
+                    <td><button onclick="predict('Oil')">Predict</button></td>
+                </tr>
+                <tr>
+                    <td>Salt</td>
+                    <td>₹12.5</td>
+                    <td>₹12.45</td>
+                    <td>₹0.05</td>
+                    <td>0.1%</td>
+                    <td><button onclick="predict('Salt')">Predict</button></td>
+                </tr>
+                <tr>
+                    <td>Fish</td>
+                    <td>₹235.5</td>
+                    <td>₹230.75</td>
+                    <td>₹5.25</td>
+                    <td>1.5%</td>
+                    <td><button onclick="predict('Fish')">Predict</button></td>
+                </tr>
+                <tr>
+                    <td>Meat</td>
+                    <td>₹345.9</td>
+                    <td>₹340.5</td>
+                    <td>₹4.4</td>
+                    <td>-2%</td>
+                    <td><button onclick="predict('Meat')">Predict</button></td>
+                </tr>
+                <tr>
+                    <td>Pulses</td>
+                    <td>₹49.6</td>
+                    <td>₹150.6</td>
+                    <td>₹1</td>
+                    <td>0.5%</td>
+                    <td><button onclick="predict('Pulses')">Predict</button></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <script>
+        function predict(commodity) {
+            alert("Predicting prices for " + commodity);
+        }
+    </script>
+
+</body>
+</html>
