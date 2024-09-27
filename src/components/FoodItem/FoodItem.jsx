@@ -1,7 +1,8 @@
 import React, { useContext } from 'react';
 import './FoodItem.css';
-import { assets } from '../../assets/assets';
 import { StoreContext } from '../../context/StoreContext';
+import Button from './Button.jsx';
+
 
 const FoodItem = ({ id, name, description, image, price }) => {
   const { cartItems, addToCart, removeFromCart } = useContext(StoreContext); // Destructure correctly
@@ -18,20 +19,15 @@ const FoodItem = ({ id, name, description, image, price }) => {
               <img onClick={() => addToCart(id)} src={assets.add_icon_green} alt="Add" />
             </div>
         } */}
-        <div className='food-item-counter'>
-          <a href="">Predict</a>
-        </div>
       </div>
       <div className="food-item-info">
         <div className="food-item-name-rating">
           <p>{name}</p>
           {/* <img src={assets.rating_starts} alt="Rating" /> */}
-          
-          
+          <Button/>
         </div>
         <p className="food-item-desc">
           {description}
-          
         </p>
         <p className="today-price inline">Today's Price:&nbsp;&nbsp;&nbsp;&nbsp;</p>
         <p className="food-item-price inline">
